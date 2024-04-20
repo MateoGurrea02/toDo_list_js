@@ -8,23 +8,19 @@
   </head>
   <body>
     <h1 class="card-title text-body-emphasis text-center p-5" style="font-size: 3.5em;">ToDo List</h1>
-    <div class="container row justify-content-start" id="contenedor">
-      <!-- <div class="card m-5" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title text-body-emphasis"></h4>
-          <p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button type="button" class="btn btn-warning">Pendiente</button>
-          <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-        </div>
+    <div class="container" style="width: 40%;">
+      <div class="form-floating mb-3">
+        <input class="form-control" placeholder="" id="title"></input>
+        <label for="title">Nombre de la tarea</label>
       </div>
-      <div class="card m-5" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title text-body-emphasis">Crear Base de datos</h4>
-          <p class="card-text text-secondary">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <button type="button" class="btn btn-success">Completado</button>
-          <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"></i></button>
-        </div>
-      </div> -->
+      <div class="form-floating mb-3">
+        <textarea class="form-control" placeholder="" id="description" style="height: 100px"></textarea>
+        <label for="description">Descripcion</label>
+      </div>
+      <button id="create" class="btn btn-primary">Crear</button>
+    </div>
+    <div class="container row justify-content-start" id="contenedor">
+      
     </div>
 
   </body>

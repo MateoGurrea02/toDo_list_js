@@ -6,58 +6,46 @@
 // Pueden utilizar librerias por ejemplo bootstrap, etc.
 
 let contenedor = document.getElementById('contenedor')
-let task_list = [
-  {
-    id: 0,
-    title: 'Hacer el boceto',
-    description: 'Sint amet sint exercitation ut mollit velit in.',
-    completada: false,
-  },
-  {
-    id: 1,
-    title: 'Crear la base de datos',
-    description: 'Ex voluptate Lorem enim proident ad excepteur.',
-    completada: false,
-  },
-  {
-    id: 2,
-    title: 'Agregar Usuarios',
-    description: 'Dolor anim anim magna minim id cillum.',
-    completada: true,
-  },
-]
+let task_list = []
 
-// const delete_task = (id) => {
-//   if (localStorage.getItem('task') === null) {
-//     console.log('No hay tareas')
-//   }
-//   else {
-//     let task_list = JSON.parse(localStorage.getItem('task'))
-//     let new_list = task_list.filter(task => task.id !== id)
-//     localStorage.setItem('task', JSON.stringify(new_list))
-//     render_task()
-//   }
+let input_title = document.getElementById('title')
+let description = document.getElementById('description')
+let btn_create = document.getElementById('create')
 
-// }
+btn_create.addEventListener('click',() => {
+  if(input_title.value === '' || description.value === ''){
+    alert('Por favor rellene los dos campos')
+  }else{
+    let task_list_storage = JSON.parse(localStorage.getItem('task'))
+    let new_element = {
+      id: task_list_storage != null ? task_list_storage.length : task_list.length,
+      title: input_title.value,
+      description: description.value,
+      completada: false,
+    }
+    //si el localstorage no esta vacio entonces se guarda en el localstorage
+    if (task_list_storage != null){
+      task_list_storage.push(new_element)
+      localStorage.setItem('task', JSON.stringify(task_list_storage))
+      location.reload()
+    }
+    //si no guardo en una lista y subo al localstorage
+    else{
+      task_list.push(new_element)
+      localStorage.setItem('task', JSON.stringify(task_list))
+      location.reload()
+    }
+  }
+})
 
-// const pending_complete = (id) => {
-//   if (localStorage.getItem('task') === null) {
-//     console.log('No hay tareas')
-//   }
-//   else {
-//     let task_list = JSON.parse(localStorage.getItem('task'))
-//     let new_list = task_list.filter(task => task.id !== id)
-//     localStorage.setItem('task', JSON.stringify(new_list))
-//     render_task()
-//   }
-// }
-
+// 
+// console.log(btn_create)
 
 const render_task = () => {
   // Si el local storage esta vacio entonces me muestra un cartel que dice que no hay tareas
   if (localStorage.getItem('task') === null) {
     console.log('No hay tareas')
-    const lista = window.localStorage.setItem('task', JSON.stringify(task_list))
+    window.localStorage.setItem('task', JSON.stringify(task_list))
     location.reload();
   }
   // Pero si tiene algo me muestra las tareas
